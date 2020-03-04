@@ -32,9 +32,11 @@
                   <ul class="nav navbar-nav ml-auto">
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
-                      <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="adminLogin.jsp">Admin</a></div>
+
+                      <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="">Login</a>
+                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
                       </li>
+
                   </ul>
               </div>
           </div>
@@ -42,8 +44,9 @@
       <div class="height150"></div>
         <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
             <p class="profile-name-card"> </p>
-            <form action="AdminLogin" method="POST" class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus=""><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password">
+            <form action="AdminLogin" method="post" class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" name="email"><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" name="password">
               <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Login</button></form></div>
+                <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
     </div>
     </div>
 

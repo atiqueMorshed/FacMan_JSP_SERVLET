@@ -32,9 +32,27 @@
                   <ul class="nav navbar-nav ml-auto">
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
+                      <%
+                          if(session.getAttribute("USER") != "1") {
+                      %>
                       <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="adminLogin.jsp">Admin</a></div>
+                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
                       </li>
+                      <%
+                          }
+                      %>
+
+                      <%
+                          if(session.getAttribute("USER") == "1") {
+                      %>
+                      <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Register</a>
+                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="addFaculty.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="addStudent.jsp">Student</a></div>
+                      </li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
+                      <%
+                          }
+                      %>
+
                   </ul>
               </div>
           </div>
