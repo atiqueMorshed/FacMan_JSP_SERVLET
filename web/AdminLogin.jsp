@@ -46,7 +46,7 @@
             <p class="profile-name-card"> </p>
             <form action="AdminLogin" method="post" class="form-signin">
                 <span class="reauth-email"> </span>
-                <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" name="email">
+                <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus=""  pattern="[a-z0-9]{3,15}@[a-z]{5}\.[a-z]{1,3}" name="email">
                 <input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" name="password" pattern=".{8,}">
                 <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Login</button>
             </form>

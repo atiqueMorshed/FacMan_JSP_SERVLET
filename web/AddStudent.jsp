@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Add Faculty</title>
+    <title>Add Student</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
@@ -60,12 +60,11 @@
             <div class="height150"></div>
             <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
                 <p class="profile-name-card"> </p>
-                <form action="AddFaculty" method="post" class="form-signin">
+                <form action="AddStudent" method="post" class="form-signin">
                     <span class="reauth-email"> </span>
-                    <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" pattern="[a-z0-9]{3,15}@[a-z]{5}\.[a-z]{1,3}" name="email">
+                    <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" pattern="[a-z0-9]{3,15}@[a-z]{5}\.[a-z]{1,3}" name="email">
                     <input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" pattern=".{8,}" name="password">
-                    <input class="form-control" type="text" required="" placeholder="Initial" pattern="[A-Z]{3}" name="initial">
-                    <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Add Faculty</button>
+                    <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Sign in</button>
                 </form>
             </div>
             <p class="text-center text-danger" name="error"> ${ESMessage} </p>
