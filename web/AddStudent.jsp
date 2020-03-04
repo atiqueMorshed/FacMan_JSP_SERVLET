@@ -24,6 +24,11 @@
 </head>
 
 <body>
+<%
+    if(session.getAttribute("USER") != "1") {
+        response.sendRedirect("index.jsp");
+    }
+%>
     <div class="containerMinHeight">
         <div class="mainHeight">
             <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">

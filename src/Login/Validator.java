@@ -21,13 +21,27 @@ public class Validator {
         boolean result = false;
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
-        if(x == 1) {
-                PreparedStatement ps = con.prepareStatement("SELECT * FROM admin WHERE AdminEmail= ? AND AdminPassword= ?");
-                ps.setString(1, email);
-                ps.setString(2, password);
-                ResultSet rs = ps.executeQuery();
-                result = rs.next();
-                con.close();
+        if(x == 1) { //Admin
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM admin WHERE AdminEmail= ? AND AdminPassword= ?");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            result = rs.next();
+            con.close();
+        } else if (x == 2) { //Faculty
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM faculty WHERE FacultyEmail= ? AND FacultyPassword= ?");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            result = rs.next();
+            con.close();
+        } else if(x == 3) { //Student
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM student WHERE StudentEmail= ? AND StudentPassword= ?");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            result = rs.next();
+            con.close();
         }
         return result;
     }
