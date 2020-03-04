@@ -35,8 +35,12 @@
                             <%
                                 if(session.getAttribute("USER") != "1") {
                             %>
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a>
+                                    <a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a>
+                                    <a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
                             </li>
                             <%
                                 }
@@ -46,7 +50,10 @@
                                 if(session.getAttribute("USER") == "1") {
                             %>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Register</a>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="AddFaculty.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="AddStudent.jsp">Student</a></div>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="AddFaculty.jsp">Faculty</a>
+                                    <a class="dropdown-item" role="presentation" href="AddStudent.jsp">Student</a>
+                                </div>
                             </li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
                             <%
@@ -88,5 +95,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Profile-Edit-Form.js"></script>
 </body>
-
 </html>

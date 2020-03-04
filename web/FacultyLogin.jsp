@@ -33,7 +33,7 @@
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
                       <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="">Login</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="facultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="studentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
+                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
                       </li>
                   </ul>
               </div>
