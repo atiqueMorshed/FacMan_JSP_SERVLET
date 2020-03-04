@@ -10,21 +10,19 @@ import java.sql.SQLException;
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
-public class AdminExtractor implements Extractor {
-
-    @Override
-    public String extractName(String email) throws SQLException {
-        String name = "Error From AdminExractor";
+public class InitialExtractor extends FacultyExtractor {
+    public String extractInitial(String email) throws SQLException {
+        String initial = "Error From FacultyExractor";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
-        PreparedStatement ps = con.prepareStatement("SELECT * FROM admin WHERE AdminEmail=?");
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM faculty WHERE FacultyEmail=?");
         ps.setString(1, email);
 
         ResultSet rs = ps.executeQuery();
         if(rs.next()) {
-            name = rs.getString("AdminName");
+            initial = rs.getString("FacultyInitial");
         }
         con.close();
-        return name;
+        return initial;
     }
 }

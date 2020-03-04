@@ -14,28 +14,28 @@ import java.sql.SQLException;
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
-@WebServlet("/AdminLogin")
-public class AdminLogin extends HttpServlet{
+@WebServlet("/StudentLogin")
+public class StudentLogin extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        Validator validator = new Validator(1);
+        Validator validator = new Validator(3);
         try {
             if(validator.validate(email, password)) {
 //                out.println("Worked!");
                 HttpSession session = request.getSession();
-                AdminExtractor adex = new AdminExtractor();
+                StudentExtractor stex = new StudentExtractor();
 
-                String name = adex.extractName(email);
+                String name = stex.extractName(email);
                 session.setAttribute("NAME", name);
-                session.setAttribute("ADMINEMAIL", email);
-                session.setAttribute("USER", "1");
+                session.setAttribute("STUDENTEMAIL", email);
+                session.setAttribute("USER", "3");
                 response.sendRedirect("index.jsp");
             } else {
                 request.setAttribute("ErrorMsg", "Invalid login information.");
 //                out.println("inElse");
-                RequestDispatcher rd = request.getRequestDispatcher("AdminLogin.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.jsp");
                 rd.include(request, response);
             }
         } catch (SQLException e) {

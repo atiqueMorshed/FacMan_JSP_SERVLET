@@ -24,6 +24,9 @@
 </head>
 
 <body>
+<%
+    session.invalidate();
+%>
   <div class="containerMinHeight">
     <div class="mainHeight">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">

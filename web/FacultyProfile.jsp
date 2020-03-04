@@ -24,6 +24,11 @@
 </head>
 
 <body>
+<%
+    if(session.getAttribute("USER") != "2") {
+        response.sendRedirect("index.jsp");
+    }
+%>
   <div class="containerMinHeight">
     <div class="mainHeight">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
@@ -32,9 +37,9 @@
                   <ul class="nav navbar-nav ml-auto">
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
-                      <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
-                      </li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="FacultyProfile.jsp">Profile</a></li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
+
                   </ul>
               </div>
           </div>
@@ -53,15 +58,16 @@
                       <hr>
                       <div class="form-row">
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Name </label><input class="form-control" disabled type="text" name="name" value="Abdul Bari"></div>
+                              <div class="form-group"><label>Name </label><input class="form-control" disabled type="text" name="name" value="<%= session.getAttribute("NAME") %>"></div>
                           </div>
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Initial </label><input class="form-control" disabled type="text" name="initial" value="ABB"></div>
+                              <div class="form-group"><label>Initial </label><input class="form-control" disabled type="text" name="initial" value="<%= session.getAttribute("INITIAL") %>"></div>
                           </div>
                       </div>
-                      <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="bari@bracu.ac.bd"></div>
+                      <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
                       <div class="form-row">
-                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="editFacultyProfile.jsp">Edit</a></div>
+                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="EditFacultyProfile.jsp">Edit</a></div>
+                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddCourseFaculty.jsp">Add Course</a></div>
                       </div>
                       <hr>
                       <div class="FacultyTableDatabase">

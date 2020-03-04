@@ -24,21 +24,27 @@
 </head>
 
 <body>
+<%
+    if(session.getAttribute("USER") != "2") {
+        response.sendRedirect("index.jsp");
+    }
+%>
+
   <div class="containerMinHeight">
     <div class="mainHeight">
-      <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
-          <div class="container"><a class="navbar-brand" href="index.jsp">FacMan</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <ul class="nav navbar-nav ml-auto">
-                      <li class="nav-item" role="presentation"></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
-                      <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a><a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
+        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+            <div class="container"><a class="navbar-brand" href="index.jsp">FacMan</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="FacultyProfile.jsp">Profile</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <div class="container profile profile-view facultyProfileBlock" id="profile">
             <div class="row">
@@ -46,60 +52,35 @@
                     <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>
                 </div>
             </div>
-            <form>
+            <form action="EditFacultyProfile" method="post">
                 <div class="form-row profile-row">
                     <div class="col-md-8">
                         <h1>Profile </h1>
                         <hr>
                         <div class="form-row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" value="Abdul Bari"></div>
+                                <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" value="<%= session.getAttribute("NAME") %>"></div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial" value="ABB"></div>
+                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial" value="<%= session.getAttribute("INITIAL") %>"></div>
                             </div>
                         </div>
-                        <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="bari@bracu.ac.bd"></div>
+                        <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
                         <div class="form-row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>New Password </label><input class="form-control" type="password" name="password"></div>
+                                <div class="form-group"><label>New Password </label><input class="form-control" type="password" pattern=".{8,}" name="password"></div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Confirm Password </label><input class="form-control" type="text" name="confirmPassword"></div>
+                                <div class="form-group"><label>Confirm Password </label><input class="form-control" type="text" pattern=".{8,}" name="confirmPassword"></div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="updateProfileButton">Update</button></div>
                         </div>
-                        <hr>
-                        <div class="addFacultyCourseForm">
-                          <h1>Add Courses </h1>
-                          <hr>
-                          <div class="form-row">
-                              <div class="col-sm-12 col-md-6">
-                                  <div class="form-group"><label>CourseID </label><input class="form-control" type="text" name="courseID"></div>
-                              </div>
-                              <div class="col-sm-12 col-md-6">
-                                  <div class="form-group"><label>Section </label><input class="form-control" type="text" name="section"></div>
-                              </div>
-                          </div>
-                          <div class="form-group"><label>Time </label><input class="form-control" type="email" name="time"></div>
-                          <!-- <div class="form-row">
-                              <div class="col-sm-12 col-md-6">
-                                  <div class="form-group"><label>New Password </label><input class="form-control" type="password" name="password"></div>
-                              </div>
-                              <div class="col-sm-12 col-md-6">
-                                  <div class="form-group"><label>Confirm Password </label><input class="form-control" type="text" name="confirmPassword"></div>
-                              </div>
-                          </div> -->
-                          <div class="form-row">
-                              <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="addCourseButton">Add</button></div>
-                          </div>
-                          <hr>
-                        </div>
 
                     </div>
                 </div>
+                <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
             </form>
         </div>
         <div class="height150"></div>

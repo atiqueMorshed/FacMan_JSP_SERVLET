@@ -33,7 +33,7 @@
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
                       <%
-                          if(session.getAttribute("USER") != "1") {
+                          if(session.getAttribute("USER") != "1" || session.getAttribute("USER") != "2" || session.getAttribute("USER") != "3" ) {
                       %>
                       <li class="nav-item dropdown">
                           <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Login</a>
@@ -54,8 +54,28 @@
                           <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Register</a>
                           <div class="dropdown-menu" role="menu">
                               <a class="dropdown-item" role="presentation" href="AddFaculty.jsp">Faculty</a>
-                              <a class="dropdown-item" role="presentation" href="AddStudent.jsp">Student</a></div>
+                              <a class="dropdown-item" role="presentation" href="AddStudent.jsp">Student</a>
+                          </div>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
                       </li>
+
+                      <%
+                          }
+                      %>
+
+                      <%
+                          if(session.getAttribute("USER") == "2") {
+                      %>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="FacultyProfile.jsp">Profile</a></li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
+                      <%
+                          }
+                      %>
+
+                      <%
+                          if(session.getAttribute("USER") == "3") {
+                      %>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="StudentProfile.jsp">Profile</a></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
                       <%
                           }
@@ -105,7 +125,7 @@
               <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
-                <td><a href="facultyProfile.jsp">mark@bracu.ac.bd</a></td>
+                <td><a href="FacultyProfile.jsp">mark@bracu.ac.bd</a></td>
                 <td>MRK</td>
                 <td>CSE110</td>
                 <td>1</td>
