@@ -13,7 +13,6 @@
 <body>
 <%
     session.invalidate();
-    session.invalidate();
     response.sendRedirect("index.jsp");
 %>
 </body>

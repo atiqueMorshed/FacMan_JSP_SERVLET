@@ -46,7 +46,7 @@
                           if(session.getAttribute("USER") == "1") {
                       %>
                       <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Register</a>
-                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="addFaculty.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="addStudent.jsp">Student</a></div>
+                          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="AddFaculty.jsp">Faculty</a><a class="dropdown-item" role="presentation" href="addStudent.jsp">Student</a></div>
                       </li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
                       <%

@@ -25,11 +25,16 @@
 <body>
     <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
         <p class="profile-name-card"> </p>
-        <form class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus=""><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password">
-            <div
-                class="checkbox">
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Remember me</label></div>
-    </div><button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Sign in</button></form><a class="forgot-password" href="#">Forgot your password?</a></div>
+        <form action="AddFaculty" method="post" class="form-signin">
+            <span class="reauth-email"> </span>
+            <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" name="email">
+            <input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" pattern=".{8,}" name="password">
+            <input class="form-control" type="text" required="" placeholder="Initial" pattern="[A-Z]{3}" name="initial">
+            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Add Faculty</button>
+        </form>
+    </div>
+    <p class="text-center text-danger" name="error"> ${ESMessage} </p>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.js"></script>

@@ -44,9 +44,14 @@
       <div class="height150"></div>
         <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
             <p class="profile-name-card"> </p>
-            <form action="AdminLogin" method="post" class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" name="email"><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" name="password">
-              <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Login</button></form></div>
-                <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
+            <form action="AdminLogin" method="post" class="form-signin">
+                <span class="reauth-email"> </span>
+                <input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" name="email">
+                <input class="form-control" type="password" id="inputPassword" required="" placeholder="Password" name="password" pattern=".{8,}">
+                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit" style="background-color: rgba(33,37,41,0.81);">Login</button>
+            </form>
+        </div>
+        <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
     </div>
     </div>
 
