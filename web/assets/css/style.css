@@ -1,0 +1,51 @@
+html, body {
+  height: 100%;
+}
+.height150 {
+  height: 150px;
+}
+.containerMinHeight {
+  min-height: 100%;
+}
+.mainHeight{
+  overflow: auto;
+
+}
+.footerBottom {
+  position: relative;
+  height: 100px;
+  margin-top: -100px;
+}
+.footerContent{
+  padding-top: 40px;
+}
+.FacultySearchByName {
+  width: 500px;
+  padding: 8px 20px;
+  margin-top: 0px;
+}
+.SearchFacultyButton {
+  padding:
+}
+.SearchFacultyTable tr {
+  border: 1px solid black;
+}
+.SearchFacultyTable td {
+  margin-top: 0px;
+}
+.TableWithSearch {
+  width 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.FacultyTableDatabase a {
+  text-decoration: underline;
+}
+.confirmEdit {
+  padding: 10px 20px;
+  display: block;
+  border: 1px solid black;
+}
+.facultyProfileBlock {
+  margin-left: 20%;
+}
