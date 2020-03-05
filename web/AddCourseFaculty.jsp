@@ -55,8 +55,7 @@
             <form action="AddCourseFaculty" method="post">
                 <div class="form-row profile-row">
                     <div class="col-md-8">
-                        <div class="form-row">
-                        <div class="addFacultyCourseForm">
+<%--                        <div class="addFacultyCourseForm">--%>
                             <h1>Add Courses</h1>
                             <hr>
                             <div class="form-row">
@@ -64,6 +63,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Course</label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="courseID">
+                                            <option value="0">Select</option>
                                             <option value="110">CSE110</option>
                                             <option value="111">CSE111</option>
                                             <option value="220">CSE220</option>
@@ -82,6 +82,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Section</label>
                                         <select class="form-control" id="exampleFormControlSelect2" name="section">
+                                            <option value="0">Select</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -102,6 +103,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect3">Day</label>
                                         <select class="form-control" id="exampleFormControlSelect3" name="day">
+                                            <option value="0">Select</option>
                                             <option value="1">SUN-TUE</option>
                                             <option value="2">MON-WED</option>
                                             <option value="3">SAT-THU</option>
@@ -113,6 +115,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect4">Time</label>
                                         <select class="form-control" id="exampleFormControlSelect4" name="time">
+                                            <option value="0">Select</option>
                                             <option value="8">8.00-9.20</option>
                                             <option value="9">9.30-10.50</option>
                                             <option value="11">11.00-12.20</option>
@@ -122,18 +125,23 @@
                                     </div>
 <%--                                    <div class="form-group"><label>Time </label><input class="form-control" type="text" name="Time"></div>--%>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect5">totalSeat</label>
-                                    <select class="form-control" id="exampleFormControlSelect5" name="totalSeat">
-                                        <option value="25">25</option>
-                                        <option value="30">30</option>
-                                        <option value="35">35</option>
-                                        <option value="40">40</option>
-                                        <option value="45">45</option>
-                                    </select>
-                                </div>
-<%--                                <div class="form-group"><label>Max Seat </label><input class="form-control" type="number" pattern="[0-9]{2}" name="seat"></div>--%>
                             </div>
+                            <div class="form-row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect5">totalSeat</label>
+                                        <select class="form-control" id="exampleFormControlSelect5" name="totalSeat">
+                                            <option value="0">Select</option>
+                                            <option value="25">25</option>
+                                            <option value="30">30</option>
+                                            <option value="35">35</option>
+                                            <option value="40">40</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+<%--                                <div class="form-group"><label>Max Seat </label><input class="form-control" type="number" pattern="[0-9]{2}" name="seat"></div>--%>
 
                             <!-- <div class="form-row">
                                 <div class="col-sm-12 col-md-6">
@@ -147,12 +155,13 @@
                                 <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="addCourseButton">Add</button></div>
                             </div>
                             <hr>
-                        </div>
-                        </div>
+<%--                        </div>--%>
                     </div>
                 </div>
             </form>
+            <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
         </div>
+
         <div class="height150"></div>
     </div>
 </div>

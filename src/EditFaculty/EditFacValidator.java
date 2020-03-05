@@ -60,6 +60,7 @@ public class EditFacValidator {
         ps.setString(3, email);
         ps.executeUpdate();
         updated = ps.executeUpdate() > 0;
+        con.close();
         if(updated) {
             return "Name Updated.\nPassword Updated.";
         }
