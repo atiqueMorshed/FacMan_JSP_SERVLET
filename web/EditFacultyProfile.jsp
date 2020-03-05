@@ -59,30 +59,32 @@
                         <hr>
                         <div class="form-row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" value="<%= session.getAttribute("NAME") %>"></div>
+<%--                                value="<%= session.getAttribute("NAME") %>"--%>
+                                <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" pattern=".{6,}" ></div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial" value="<%= session.getAttribute("INITIAL") %>"></div>
+<%--                                value="<%= session.getAttribute("INITIAL") %>"--%>
+                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial"></div>
                             </div>
                         </div>
                         <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
                         <div class="form-row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>New Password </label><input class="form-control" type="password" pattern=".{8,}" name="password"></div>
+                                <div class="form-group"><label>New Password </label><input class="form-control" type="password" pattern=".{8,}" name="passwordX"></div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group"><label>Confirm Password </label><input class="form-control" type="text" pattern=".{8,}" name="confirmPassword"></div>
+                                <div class="form-group"><label>Confirm Password </label><input class="form-control" type="password" pattern=".{8,}" name="cpasswordX"></div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="updateProfileButton">Update</button></div>
+                            <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit">Update</button></div>
                         </div>
 
                     </div>
                 </div>
-                <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
             </form>
         </div>
+        <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
         <div class="height150"></div>
       </div>
     </div>

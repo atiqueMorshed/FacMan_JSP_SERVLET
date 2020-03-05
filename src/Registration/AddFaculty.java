@@ -47,7 +47,5 @@ public class AddFaculty extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

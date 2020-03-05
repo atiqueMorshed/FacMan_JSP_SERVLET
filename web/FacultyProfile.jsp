@@ -66,8 +66,12 @@
                       </div>
                       <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
                       <div class="form-row">
-                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="EditFacultyProfile.jsp">Edit</a></div>
-                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddCourseFaculty.jsp">Add Course</a></div>
+                          <div class="col-sm-12 col-md-6">
+                            <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="EditFacultyProfile.jsp">Edit</a></div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                            <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddCourseFaculty.jsp">Add Course</a></div>
+                          </div>
                       </div>
                       <hr>
                       <div class="FacultyTableDatabase">
