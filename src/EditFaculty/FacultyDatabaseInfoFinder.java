@@ -61,4 +61,26 @@ public class FacultyDatabaseInfoFinder {
         ps.executeUpdate();
         con.close();
     }
+
+    public void changeActiveStatus(int id) throws SQLException {
+        DBConnect dbc = new DBConnect();
+        Connection con = dbc.getConnection();
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM facourses WHERE FCID=?");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        int currentStatus = 0;
+        int changedStatus;
+        if(rs.next()) {
+            currentStatus = rs.getInt("ActiveStatus");
+        }
+        rs.close();
+
+        if(currentStatus==0) changedStatus=1;
+        else changedStatus=0;
+        ps = con.prepareStatement("UPDATE facourses SET ActiveStatus=? WHERE FCID=?");
+        ps.setInt(1, changedStatus);
+        ps.setInt(2, id);
+        ps.executeUpdate();
+        con.close();
+    }
 }

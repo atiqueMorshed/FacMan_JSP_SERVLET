@@ -71,12 +71,10 @@
                       </div>
                       <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
                       <div class="form-row">
-                          <div class="col-sm-12 col-md-6">
+<%--                          <div class="col-sm-12 col-md-6">--%>
                             <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="EditFacultyProfile.jsp">Edit</a></div>
-                          </div>
-                          <div class="col-sm-12 col-md-6">
-                            <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddCourseFaculty.jsp">Add Course</a></div>
-                          </div>
+<%--                          </div>--%>
+
                       </div>
                       <hr>
                       <div class="FacultyTableDatabase">
@@ -125,7 +123,19 @@
                               <td><%=rs.getInt("TotalStudents")%></td>
                               <td><%=activeStatus%></td>
                               <td><a href="FacultyProfileDatabaseDelete.jsp?FCID=<%=FCID%>"><img src="assets/img/delete.png" height="20px"></a></td>
-                              <td><a href="FacultyProfileDatabaseEdit.jsp?FCID=<%=FCID%>">...</a></td>
+                                <%
+                                if(rs.getInt("ActiveStatus")==1){
+                                %>
+                                <td><a href="FacultyProfileDatabaseActiveStatus.jsp?FCID=<%=FCID%>"><img src="assets/img/on.png" height="20px"></a></td>
+
+                                <%
+                                }else{
+                                %>
+                                <td><a href="FacultyProfileDatabaseActiveStatus.jsp?FCID=<%=FCID%>"><img src="assets/img/off.png" height="20px"></a></td>
+                                <%
+                                    }
+                                %>
+
                               <td><a href="FacultyProfileDatabaseMessageAll.jsp?FCID=<%=FCID%>">...</a></td>
 
                             </tr>
@@ -155,6 +165,9 @@
 <%--                            </tr>--%>
                           </tbody>
                         </table>
+<%--                          <div class="col-sm-12 col-md-6">--%>
+                              <div class="col-md-12 content-right"><a class="btn btn-danger form-btn noUnderline" href="AddCourseFaculty.jsp">Add Course</a></div>
+<%--                          </div>--%>
                       </div>
 
                   </div>

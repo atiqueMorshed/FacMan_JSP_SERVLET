@@ -51,4 +51,9 @@ html, body {
 }
 .FacultyProfileTable td{
   vertical-align: middle;
+  text-align: center;
+  align: center;
+}
+.noUnderline{
+  text-decoration: none;
 }
