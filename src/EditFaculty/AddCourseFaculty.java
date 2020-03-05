@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
+ * Created by [Atique Morshed Sami] [17101076] on 3/5/2020.
  */
-@WebServlet("/EditFacultyProfile")
-public class EditFacultyProfile extends HttpServlet {
+@WebServlet("/AddCourseFaculty")
+public class AddCourseFaculty extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String result = "";
         HttpSession session = request.getSession();
