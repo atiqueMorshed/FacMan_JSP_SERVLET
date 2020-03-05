@@ -1,3 +1,8 @@
+<%@ page import="Database.DBConnect" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="EditFaculty.FacultyDatabaseInfoFinder" %>
 <!DOCTYPE html>
 <html>
 
@@ -24,11 +29,11 @@
 </head>
 
 <body>
-<%
-    if(session.getAttribute("USER") != "2") {
-        response.sendRedirect("index.jsp");
-    }
-%>
+<%--<%--%>
+<%--    if(session.getAttribute("USER") != "2") {--%>
+<%--        response.sendRedirect("index.jsp");--%>
+<%--    }--%>
+<%--%>--%>
   <div class="containerMinHeight">
     <div class="mainHeight">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
@@ -53,7 +58,7 @@
           </div> -->
           <form>
               <div class="form-row profile-row">
-                  <div class="col-md-8">
+                  <div class="col-xs-12">
                       <h1>Profile </h1>
                       <hr>
                       <div class="form-row">
@@ -75,42 +80,79 @@
                       </div>
                       <hr>
                       <div class="FacultyTableDatabase">
-                        <table class="table">
+                        <table class="table FacultyProfileTable">
                           <thead class="thead-dark">
                             <tr>
                               <th scope="col">#</th>
                               <th scope="col">Course</th>
                               <th scope="col">Section</th>
+                              <th scope="col">Day</th>
                               <th scope="col">Time</th>
-                              <th scope="col">Message</th>
+                              <th scope="col">Students</th>
+                              <th scope="col">Active</th>
                               <th scope="col">Delete</th>
+                              <th scope="col">Deactivate/Activate</th>
+                              <th scope="col">Message All Students</th>
                             </tr>
                           </thead>
                           <tbody>
+                          <%
+                              if(session.getAttribute("USER") != "2") {
+                                  response.sendRedirect("index.jsp");
+                              }else{
+                              String email = session.getAttribute("FACULTYEMAIL").toString();
+                              FacultyDatabaseInfoFinder fdif = new FacultyDatabaseInfoFinder();
+                              int facultyCourses = fdif.FacultyCoursesFinder(email);
+                              DBConnect dbc = new DBConnect();
+                              Connection con = dbc.getConnection();
+                              PreparedStatement ps = con.prepareStatement("SELECT * FROM facourses WHERE FacultyCourses=?");
+                              ps.setInt(1, facultyCourses);
+                              ResultSet rs = ps.executeQuery();
+                              int i = 1;
+                              while(rs.next()) {
+
+                                  String day=fdif.dayFinder(rs.getInt("Day"));
+                                  String time=fdif.timeFinder(rs.getInt("Time"));
+                                  String activeStatus = fdif.ActiveStatusFinder(rs.getInt("ActiveStatus"));
+                                  int FCID = rs.getInt("FCID");
+                          %>
                             <tr>
-                              <th scope="row">1</th>
-                              <td>CSE110</td>
-                              <td>1</td>
-                              <td>SUN-TUE [09.00AM-10.20AM]</td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="messageAllCourse1">Send</button></div></td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="profileCourseDeleteButton1">Delete</button></div></td>
+                              <th><%=i%></th>
+                              <td>CSE<%=rs.getInt("CourseID")%></td>
+                              <td><%=rs.getInt("Section")%></td>
+                              <td><%=day%></td>
+                              <td><%=time%></td>
+                              <td><%=rs.getInt("TotalStudents")%></td>
+                              <td><%=activeStatus%></td>
+                              <td><a href="FacultyProfileDatabaseDelete.jsp?FCID=<%=FCID%>"><img src="assets/img/delete.png" height="20px"></a></td>
+                              <td><a href="FacultyProfileDatabaseEdit.jsp?FCID=<%=FCID%>">...</a></td>
+                              <td><a href="FacultyProfileDatabaseMessageAll.jsp?FCID=<%=FCID%>">...</a></td>
+
                             </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>CSE110</td>
-                              <td>2</td>
-                              <td>SUN-TUE [10.30AM-12.00PM]</td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="messageAllCourse2">Send</button></div></td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="profileCourseDeleteButton2">Delete</button></div></td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>CSE111</td>
-                              <td>1</td>
-                              <td>MON-WED [10.30AM-12.00PM]</td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="messageAllCourse3">Send</button></div></td>
-                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="profileCourseDeleteButton3">Delete</button></div></td>
-                            </tr>
+
+                          <%
+                              i++;
+                              }
+                              rs.close();
+                              con.close();
+                              }
+                          %>
+<%--                            <tr>--%>
+<%--                              <th scope="row">2</th>--%>
+<%--                              <td>CSE110</td>--%>
+<%--                              <td>2</td>--%>
+<%--                              <td>SUN-TUE [10.30AM-12.00PM]</td>--%>
+<%--                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="messageAllCourse2">Send</button></div></td>--%>
+<%--                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="profileCourseDeleteButton2">Delete</button></div></td>--%>
+<%--                            </tr>--%>
+<%--                            <tr>--%>
+<%--                              <th scope="row">3</th>--%>
+<%--                              <td>CSE111</td>--%>
+<%--                              <td>1</td>--%>
+<%--                              <td>MON-WED [10.30AM-12.00PM]</td>--%>
+<%--                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="messageAllCourse3">Send</button></div></td>--%>
+<%--                              <td><div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="profileCourseDeleteButton3">Delete</button></div></td>--%>
+<%--                            </tr>--%>
                           </tbody>
                         </table>
                       </div>
@@ -130,6 +172,7 @@
 
 
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
