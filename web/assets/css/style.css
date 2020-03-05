@@ -25,7 +25,7 @@ html, body {
   margin-top: 0px;
 }
 .SearchFacultyButton {
-  padding:
+  /*padding:*/
 }
 .SearchFacultyTable tr {
   border: 1px solid black;
@@ -34,7 +34,7 @@ html, body {
   margin-top: 0px;
 }
 .TableWithSearch {
-  width 70%;
+  /*width: 70%;*/
   margin-left: 15%;
   margin-right: 15%;
 }
@@ -48,4 +48,12 @@ html, body {
 }
 .facultyProfileBlock {
   margin-left: 20%;
+}
+.FacultyProfileTable td{
+  vertical-align: middle;
+  text-align: center;
+  align: center;
+}
+.noUnderline{
+  text-decoration: none;
 }
