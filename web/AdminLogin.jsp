@@ -36,13 +36,17 @@
                       <li class="nav-item" role="presentation"></li>
                       <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Home</a></li>
 
-                      <li class="nav-item dropdown">
-                          <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="">Login</a>
-                          <div class="dropdown-menu" role="menu">
-                              <a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a>
-                              <a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a>
-                              <a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>
-                      </li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="AddFaculty.jsp">Faculty</a></li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="AddStudent.jsp">Student</a></li>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="logout.jsp">Logout</a></li>
+
+<%--                      <li class="nav-item dropdown">--%>
+<%--                          <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="">Login</a>--%>
+<%--                          <div class="dropdown-menu" role="menu">--%>
+<%--                              <a class="dropdown-item" role="presentation" href="FacultyLogin.jsp">Faculty</a>--%>
+<%--                              <a class="dropdown-item" role="presentation" href="StudentLogin.jsp">Student</a>--%>
+<%--                              <a class="dropdown-item" role="presentation" href="AdminLogin.jsp">Admin</a></div>--%>
+<%--                      </li>--%>
 
                   </ul>
               </div>
