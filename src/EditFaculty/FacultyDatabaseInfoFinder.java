@@ -46,7 +46,7 @@ public class FacultyDatabaseInfoFinder {
     public String timeFinder(int a) {
         String time;
         if(a == 8) time="8.00-9.20AM";
-        else if(a == 9) time="9.30-10.500AM";
+        else if(a == 9) time="9.30-10.50AM";
         else if(a == 11) time="11.00-12.20PM";
         else if(a == 12) time="12.30-1.50PM";
         else if(a == 2) time="02.00-3.20PM";

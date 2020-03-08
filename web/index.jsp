@@ -148,6 +148,8 @@
                 String searchYes = asearchYes;
                 if(searchYes!= null && asearchYes.contains("CSE"))
                     searchYes = asearchYes.replaceAll("CSE","");
+                if(searchYes!= null && asearchYes.contains("cse"))
+                    searchYes = asearchYes.replaceAll("cse","");
 
 
 

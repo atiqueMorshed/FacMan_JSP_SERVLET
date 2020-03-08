@@ -28,8 +28,10 @@ public class StudentLogin extends HttpServlet{
                 StudentExtractor stex = new StudentExtractor();
 
                 String name = stex.extractName(email);
+                int StudentCourses = stex.extractStudentCourses(email);
                 session.setAttribute("NAME", name);
                 session.setAttribute("STUDENTEMAIL", email);
+                session.setAttribute("STUDENTCOURSES", StudentCourses);
                 session.setAttribute("USER", "3");
                 response.sendRedirect("index.jsp");
             } else {
