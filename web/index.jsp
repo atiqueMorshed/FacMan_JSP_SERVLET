@@ -115,16 +115,16 @@
       <div class="height150"></div>
       <div class="TableWithSearch">
           <form action="" method="get">
-              <div class="input-group">
+              <div class="input-group" style="margin-bottom: 20px">
                   <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2" name="SearchField">
-                  <div class="input-group-append">
-                      <select class="browser-default custom-select" name="SearchFilter">
-                          <option selected value="0">Filter</option>
-                          <option value="1">Name</option>
-                          <option value="2">Course</option>
-                      </select>
-                      <button class="btn btn-outline-secondary" type="submit" name="SearchButton">Search</button>
-                  </div>
+<%--                  <div class="input-group-append">--%>
+<%--                      <select class="browser-default custom-select" name="SearchFilter">--%>
+<%--                          <option selected value="0">Filter</option>--%>
+<%--                          <option value="1">Name</option>--%>
+<%--                          <option value="2">Course</option>--%>
+<%--                      </select>--%>
+<%--                      <button class="btn btn-outline-secondary" type="submit" name="SearchButton">Search</button>--%>
+<%--                  </div>--%>
               </div>
           </form>
         <div class="FacultyTableDatabase">
@@ -144,39 +144,50 @@
             </thead>
             <tbody>
             <%
-                String searchYes = request.getParameter("SearchField");
-                String filter = request.getParameter("SearchFilter");
-//                int filter = getInt(searchYesFilter);
+                String asearchYes = request.getParameter("SearchField");
+                String searchYes = asearchYes;
+                if(searchYes!= null && asearchYes.contains("CSE"))
+                    searchYes = asearchYes.replaceAll("CSE","");
+
+
+
+//                String afilter = request.getParameter("SearchFilter");
+//                int filter = getInt("afilter");
                 DBConnect dbc = new DBConnect();
                 Connection con = dbc.getConnection();
                 PreparedStatement ps;
 //                try {
-//                    if(filter == "0" || filter == null) {
+                    if(searchYes == null) {
+                        ps = con.prepareStatement("SELECT f.FacultyName, f.FacultyEmail, f.FacultyInitial, f.FacultyCourses, c.FacultyCourses, c.CourseID, c.Section, c.Day, c.Time, c.TotalStudents, c.ActiveStatus, c.FCID FROM faculty as f RIGHT JOIN facourses as c ON f.FacultyCourses = c.FacultyCourses ORDER BY c.CourseID");
 //                        ps = con.prepareStatement("SELECT f.FacultyName, f.FacultyEmail, f.FacultyInitial, f.FacultyCourses, c.FacultyCourses, c.CourseID, c.Section, c.Day, c.Time, c.TotalStudents, c.FCID FROM faculty as f RIGHT JOIN facourses as c ON f.FacultyCourses = c.FacultyCourses ORDER BY c.CourseID");
-////                        ps = con.prepareStatement("SELECT * FROM faculty, facourses");
-////                        ps = con.prepareStatement("SELECT faculty.FacultyName, faculty.FacultyEmail, faculty.FacultyInitial, faculty.FacultyCourses, facourses.FacultyCourses, facourses.CourseID, facourses.Section, facourses.Day, facourses.Time, facourses.TotalStudents, facourses.FCID\n" +
-////                                "FROM faculty \n" +
-////                                "FULL JOIN facourses\n" +
-////                                "ON faculty.FacultyCourses = facourses.FacultyCourses\n" +
-////                                "ORDER BY facourses.CourseID");
-//                    } else if(filter == "1" && searchYes!= null) {
-////                        ps = con.prepareStatement("SELECT * FROM facourses WHERE FacultyName LIKE '%"+searchYes+"%'");
+//                        ps = con.prepareStatement("SELECT * FROM faculty, facourses");
 //                        ps = con.prepareStatement("SELECT faculty.FacultyName, faculty.FacultyEmail, faculty.FacultyInitial, faculty.FacultyCourses, facourses.FacultyCourses, facourses.CourseID, facourses.Section, facourses.Day, facourses.Time, facourses.TotalStudents, facourses.FCID\n" +
 //                                "FROM faculty \n" +
 //                                "FULL JOIN facourses\n" +
 //                                "ON faculty.FacultyCourses = facourses.FacultyCourses\n" +
-//                                "WHERE FacultyName LIKE '%\"+searchYes+\"%'\n" +
 //                                "ORDER BY facourses.CourseID");
-//                    } else {
-////                        ps = con.prepareStatement("SELECT * FROM facourses WHERE CourseID LIKE '%"+searchYes+"%'");
+                    }
+//                    else if(filter == 1 && searchYes!= null) {
+//                        ps = con.prepareStatement("SELECT f.FacultyName, f.FacultyEmail, f.FacultyInitial, f.FacultyCourses, c.FacultyCourses, c.CourseID, c.Section, c.Day, c.Time, c.TotalStudents, c.ActiveStatus, c.FCID FROM faculty as f RIGHT JOIN facourses as c ON f.FacultyCourses = c.FacultyCourses WHERE f.FacultyName LIKE '%"+searchYes+"%' ORDER BY c.CourseID");
+////                        ps = con.prepareStatement("SELECT * FROM facourses WHERE FacultyName LIKE '%"+searchYes+"%'");
+////                        ps = con.prepareStatement("SELECT faculty.FacultyName, faculty.FacultyEmail, faculty.FacultyInitial, faculty.FacultyCourses, facourses.FacultyCourses, facourses.CourseID, facourses.Section, facourses.Day, facourses.Time, facourses.TotalStudents, facourses.FCID\n" +
+////                                "FROM faculty \n" +
+////                                "FULL JOIN facourses\n" +
+////                                "ON faculty.FacultyCourses = facourses.FacultyCourses\n" +
+////                                "WHERE FacultyName LIKE '%\"+searchYes+\"%'\n" +
+////                                "ORDER BY facourses.CourseID");
+//                    }
+                    else {
+                        ps = con.prepareStatement("SELECT f.FacultyName, f.FacultyEmail, f.FacultyInitial, f.FacultyCourses, c.FacultyCourses, c.CourseID, c.Section, c.Day, c.Time, c.TotalStudents, c.ActiveStatus, c.FCID FROM faculty as f RIGHT JOIN facourses as c ON f.FacultyCourses = c.FacultyCourses WHERE c.CourseID LIKE '%"+searchYes+"%' OR f.FacultyName LIKE '%"+searchYes+"%' OR f.FacultyInitial LIKE '%"+searchYes+"%' ORDER BY c.CourseID");
+
+//                        ps = con.prepareStatement("SELECT * FROM facourses WHERE CourseID LIKE '%"+searchYes+"%'");
 //                        ps = con.prepareStatement("SELECT faculty.FacultyName, faculty.FacultyEmail, faculty.FacultyInitial, faculty.FacultyCourses, facourses.FacultyCourses, facourses.CourseID, facourses.Section, facourses.Day, facourses.Time, facourses.TotalStudents, facourses.FCID\n" +
 //                                "FROM faculty \n" +
 //                                "FULL JOIN facourses\n" +
 //                                "ON faculty.FacultyCourses = facourses.FacultyCourses\n" +
 //                                "WHERE CourseID LIKE '%\"+searchYes+\"%'\n" +
 //                                "ORDER BY facourses.CourseID");
-//                    }
-                    ps = con.prepareStatement("SELECT f.FacultyName, f.FacultyEmail, f.FacultyInitial, f.FacultyCourses, c.FacultyCourses, c.CourseID, c.Section, c.Day, c.Time, c.TotalStudents, c.ActiveStatus, c.FCID FROM faculty as f RIGHT JOIN facourses as c ON f.FacultyCourses = c.FacultyCourses ORDER BY c.CourseID");
+                    }
 //
                     ResultSet rs = ps.executeQuery();
                     while(rs.next()) {
@@ -184,13 +195,12 @@
                         String day=fdif.dayFinder(rs.getInt("c.Day"));
                         String time=fdif.timeFinder(rs.getInt("c.Time"));
                         String activeStatus = fdif.ActiveStatusFinder(rs.getInt("c.ActiveStatus"));
-                        int FCID = rs.getInt("c.FCID");
+                        int FacultyCourses = rs.getInt("f.FacultyCourses");
 
                     %>
                     <tr>
-                        <th>a</th>
                         <th><%=rs.getString("f.FacultyName")%></th>
-                        <th><%=rs.getString("f.FacultyEmail")%></th>
+                        <th><a href="PublicFacultyProfile.jsp?FacultyCourses=<%=FacultyCourses%>"><%=rs.getString("f.FacultyEmail")%></a></th>
                         <th><%=rs.getString("f.FacultyInitial")%></th>
                         <td>CSE<%=rs.getInt("c.CourseID")%></td>
                         <td><%=rs.getInt("c.Section")%></td>
