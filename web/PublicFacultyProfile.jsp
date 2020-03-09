@@ -132,19 +132,17 @@
             <form>
                 <div class="form-row profile-row">
                     <div class="col-md-10">
+
                         <%
                             if(session.getAttribute("USER") == "3") {
                         %>
-                        <h1>Profile <a href="Chat.jsp?StudentCourses=<%=session.getAttribute("STUDENTCOURSES")%>"><img
-                                src="assets/img/message2.png" alt=""></a></h1>
-                        <%
-                            } else {
-                        %>
-                        <h1>Profile </h1>
+                        <h2>Message Now: <a href="Chat.jsp?StudentCourses=<%=session.getAttribute("STUDENTCOURSES")%>"><img
+                                src="assets/img/message2.png" alt="" style="height: 30px; align-self: center"></a></h2>
                         <%
                             }
                         %>
-
+                        <hr>
+                        <h1>Profile </h1>
                         <hr>
                         <div class="form-row">
                             <div class="col-sm-12 col-md-6">

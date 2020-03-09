@@ -1,3 +1,8 @@
+<%@ page import="EditStudent.StudentDatabaseInfoFinder" %>
+<%@ page import="Database.DBConnect" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
 
@@ -57,15 +62,22 @@
                       <hr>
                       <div class="form-row">
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Name </label><input class="form-control" disabled type="text" name="name" value="Student One"></div>
+                              <div class="form-group"><label>Name </label><input class="form-control" disabled type="text" name="name" value="<%=session.getAttribute("NAME")%>" ></div>
                           </div>
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Password </label><input class="form-control" disabled type="text" name="initial" value="********"></div>
+                              <div class="form-group"><label>DOB </label><input class="form-control" disabled type="date" name="dob" value="<%=session.getAttribute("DOB")%>" ></div>
                           </div>
                       </div>
-                      <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled name="email" value="student1@gmail.com"></div>
                       <div class="form-row">
-                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="editStudentProfile.jsp">Edit</a></div>
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled name="email" value="<%=session.getAttribute("STUDENTEMAIL")%>" ></div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>Phone </label><input class="form-control" disabled type="text" name="phone" value="<%=session.getAttribute("PHONE")%>" ></div>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="EditStudentProfile.jsp">Edit</a></div>
                       </div>
                       <hr>
                       <div class="studentCoursesTaken">
@@ -75,28 +87,59 @@
                               <th scope="col">#</th>
                               <th scope="col">Course</th>
                               <th scope="col">Section</th>
+                                <th scope="col">Day</th>
                               <th scope="col">Time</th>
+                              <th scope="col">Faculty Profile/Message</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>CSE110</td>
-                              <td>1</td>
-                              <td>SUN-TUE [09.00AM-10.20AM]</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>CSE110</td>
-                              <td>2</td>
-                              <td>SUN-TUE [10.30AM-12.00PM]</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>CSE111</td>
-                              <td>1</td>
-                              <td>MON-WED [10.30AM-12.00PM]</td>
-                            </tr>
+                          <%
+                              if(session.getAttribute("USER") != "3") {
+                                  response.sendRedirect("index.jsp");
+                              }else{
+
+                                  StudentDatabaseInfoFinder sdif = new StudentDatabaseInfoFinder();
+//                                  int StudentCourses = 9;
+                                  int StudentCourses = (int)session.getAttribute("STUDENTCOURSES");
+                                  DBConnect dbc = new DBConnect();
+                                  Connection con = dbc.getConnection();
+                                  PreparedStatement ps = con.prepareStatement("SELECT FCID FROM stcourses WHERE StudentCourses=?");
+                                  ps.setInt(1, StudentCourses);
+                                  ResultSet rs = ps.executeQuery();
+                                  int i = 1;
+                                  while(rs.next()) {
+                                      int FCID = rs.getInt("FCID");
+                                      DBConnect dbc2 = new DBConnect();
+                                      Connection con2 = dbc2.getConnection();
+                                      PreparedStatement ps2 = con2.prepareStatement("SELECT fc.FacultyCourses, fc.courseID, fc.Section, fc.Day, fc.Time FROM facourses as fc WHERE FCID=?");
+                                      ps2.setInt(1, FCID);
+                                      ResultSet rs2 = ps2.executeQuery();
+                                      rs2.next();
+                                      int FacultyCourses = rs2.getInt("fc.FacultyCourses");
+                                      int CourseID = rs2.getInt("fc.CourseID");
+                                      int Section = rs2.getInt("fc.Section");
+                                      String Day=sdif.dayFinder(rs2.getInt("fc.Day"));
+                                      String Time=sdif.timeFinder(rs2.getInt("fc.Time"));
+                          %>
+                                <tr>
+                                  <th scope="row"><%=i%></th>
+                                  <td>CSE<%=CourseID%></td>
+                                  <td><%=Day%></td>
+                                  <td><%=Day%></td>
+                                  <td><%=Time%></td>
+                                    <td><a href="PublicFacultyProfile.jsp?FacultyCourses=<%=FacultyCourses%>"><img
+                                            src="assets/img/message2.png" alt="" style="height: 20px; align-self: center"></a></td>
+                                </tr>
+                          <%
+                                      i++;
+                                      rs2.close();
+                                      con2.close();
+
+                                  }
+                                  rs.close();
+                                  con.close();
+                              }
+                          %>
                           </tbody>
                         </table>
                       </div>
@@ -105,6 +148,9 @@
               </div>
           </form>
       </div>
+        <div class="form-row">
+            <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddStudentCourse.jsp">Add Course</a></div>
+        </div>
         <div class="height150"></div>
       </div>
     </div>
@@ -124,6 +170,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="assets/js/Profile-Edit-Form.js"></script> -->
+    <script src="assets/js/Profile-Edit-Form.js"></script>
 </body>
 </html>
