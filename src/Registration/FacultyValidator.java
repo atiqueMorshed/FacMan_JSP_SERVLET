@@ -58,6 +58,7 @@ public class FacultyValidator implements Validator {
             ps.setString(3, password);
             ps.executeUpdate();
         }
+        rs.close();
         con.close();
 
         return al;
