@@ -45,7 +45,7 @@
                 </div>
             </div>
         </nav>
-
+        <div class="height150"></div>
         <div class="container profile profile-view facultyProfileBlock" id="profile">
             <div class="row">
                 <div class="col-md-12 alert-col relative">
@@ -104,7 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="assets/js/Profile-Edit-Form.js"></script> -->
+    <script src="assets/js/Profile-Edit-Form.js"></script>
 </body>
 
 </html>

@@ -22,5 +22,9 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.311" level="application_server_libraries" />
     <orderEntry type="library" name="mysql-connector-java-8.0.19" level="project" />
     <orderEntry type="library" name="jquery.tablesorter" level="application" />
+    <orderEntry type="library" name="bootstrap.bundle" level="application" />
+    <orderEntry type="library" name="widget-storage" level="application" />
+    <orderEntry type="library" name="widget-filter" level="application" />
+    <orderEntry type="library" name="dataTables.bootstrap" level="application" />
   </component>
 </module>
