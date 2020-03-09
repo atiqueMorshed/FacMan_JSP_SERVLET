@@ -18,7 +18,7 @@ public class EditFacultyProfile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String result = "";
         HttpSession session = request.getSession();
-        String email = session.getAttribute("FACULTYEMAIL").toString();
+        String email = (String)session.getAttribute("FACULTYEMAIL");
 //        String email = request.getParameter("email");
         String password = request.getParameter("passwordX");
         String cpassword = request.getParameter("cpasswordX");

@@ -47,11 +47,11 @@
         </nav>
         <div class="height150"></div>
         <div class="container profile profile-view facultyProfileBlock" id="profile">
-            <div class="row">
-                <div class="col-md-12 alert-col relative">
-                    <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>
-                </div>
-            </div>
+<%--            <div class="row">--%>
+<%--                <div class="col-md-12 alert-col relative">--%>
+<%--                    <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <form action="EditFacultyProfile" method="post">
                 <div class="form-row profile-row">
                     <div class="col-md-8">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
 <%--                                value="<%= session.getAttribute("INITIAL") %>"--%>
-                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial"></div>
+                                <div class="form-group"><label>Initial </label><input class="form-control" type="text" name="initial" pattern="[A-Z]{3}"></div>
                             </div>
                         </div>
                         <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled autocomplete="off" required="" name="email" value="<%= session.getAttribute("FACULTYEMAIL") %>"></div>
@@ -104,7 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Profile-Edit-Form.js"></script>
+<%--    <script src="assets/js/Profile-Edit-Form.js"></script>--%>
 </body>
 
 </html>
