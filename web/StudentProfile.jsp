@@ -124,7 +124,7 @@
                                 <tr>
                                   <th scope="row"><%=i%></th>
                                   <td>CSE<%=CourseID%></td>
-                                  <td><%=Day%></td>
+                                  <td><%=Section%></td>
                                   <td><%=Day%></td>
                                   <td><%=Time%></td>
                                     <td><a href="PublicFacultyProfile.jsp?FacultyCourses=<%=FacultyCourses%>"><img
@@ -134,23 +134,40 @@
                                       i++;
                                       rs2.close();
                                       con2.close();
-
                                   }
                                   rs.close();
                                   con.close();
-                              }
                           %>
                           </tbody>
                         </table>
+                          <%
+                              dbc = new DBConnect();
+                              con = dbc.getConnection();
+                              ps = con.prepareStatement("SELECT CourseTaken FROM student WHERE StudentCourses =?");
+                              ps.setInt(1, StudentCourses);
+                              rs = ps.executeQuery();
+                              rs.next();
+                              int CourseTaken = rs.getInt("CourseTaken");
+                              if(CourseTaken < 4) {
+                          %>
+                          <div class="form-row">
+                              <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddStudentCourse.jsp">Add Course</a></div>
+                          </div>
+                          <%
+                              } else {
+                          %>
+                          <div class="form-row">
+                              <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" disabled >Add Course</button></div>
+                          </div>
+                          <%
+                              }
+                              }
+                          %>
                       </div>
-
                   </div>
               </div>
           </form>
       </div>
-        <div class="form-row">
-            <div class="col-md-12 content-right"><a class="btn btn-danger form-btn" href="AddStudentCourse.jsp">Add Course</a></div>
-        </div>
         <div class="height150"></div>
       </div>
     </div>
@@ -159,8 +176,6 @@
             <p class="text-center text-white m-0 small footerContent">Copyright&nbsp;© FacMan 2020</p>
         </div>
     </footer>
-
-
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.js"></script>
