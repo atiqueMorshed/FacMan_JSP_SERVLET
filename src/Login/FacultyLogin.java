@@ -27,11 +27,16 @@ public class FacultyLogin extends HttpServlet{
                 HttpSession session = request.getSession();
                 FacultyExtractor faex = new FacultyExtractor();
                 InitialExtractor inex = new InitialExtractor();
+                FacultyCoursesExtractor fcex = new FacultyCoursesExtractor();
+
                 String name = faex.extractName(email);
                 String initial = inex.extractInitial(email);
+                int FacultyCourses = fcex.extractFC(email);
+
                 session.setAttribute("NAME", name);
                 session.setAttribute("FACULTYEMAIL", email);
                 session.setAttribute("INITIAL", initial);
+                session.setAttribute("FACULTYCOURSES", FacultyCourses);
                 session.setAttribute("USER", "2");
                 response.sendRedirect("FacultyProfile.jsp");
             } else {
