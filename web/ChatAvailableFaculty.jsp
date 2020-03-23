@@ -58,7 +58,10 @@
           }
         }
       }
+      rs2.close();
     }
+    rs.close();
+    con.close();
   }
   else if(session.getAttribute("USER") == "3") {
     ArrayList<Integer> al = new ArrayList<Integer>();
@@ -114,6 +117,9 @@
           }
         }
       }
+    rs2.close();
     }
+  rs.close();
+  con.close();
   }
 %>

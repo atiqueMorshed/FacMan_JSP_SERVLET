@@ -45,6 +45,8 @@
 <%
       }
     }
+    rs.close();
+    con.close();
   }
   else if(request.getParameter("StudentCourses") != null) {
     int FacultyCourses = (int)session.getAttribute("FACULTYCOURSES");
@@ -87,5 +89,7 @@
 <%
       }
     }
+    rs.close();
+    con.close();
   }
 %>
