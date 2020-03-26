@@ -50,20 +50,35 @@
                   <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>
               </div>
           </div> -->
-          <form>
+          <form action="EditStudentProfile" method="post">
               <div class="form-row profile-row">
                   <div class="col-md-8">
                       <h1>Profile </h1>
                       <hr>
                       <div class="form-row">
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" value="Student One"></div>
+                              <div class="form-group"><label>Name </label><input class="form-control" type="text" name="name" pattern=".{6,}"></div>
                           </div>
                           <div class="col-sm-12 col-md-6">
-                              <div class="form-group"><label>Password </label><input class="form-control" type="text" name="initial" value="********"></div>
+                              <div class="form-group"><label>DOB </label><input class="form-control" type="date" name="dob" min="1990-01-01" max="2000-01-01" ></div>
                           </div>
                       </div>
-                      <div class="form-group"><label>Email </label><input class="form-control" type="email" disabled name="email" value="student1@gmail.com"></div>
+                      <div class="form-row">
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>Email </label><input class="form-control" disabled type="email" name="email" value="<%=session.getAttribute("STUDENTEMAIL")%>"></div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>Phone </label><input class="form-control" type="phone" name="phone" pattern="\+8801[5-7]{1}\d{8}" placeholder="+8801711111111"></div>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>New Password </label><input class="form-control" type="password" pattern=".{8,}" name="passwordX"></div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                              <div class="form-group"><label>Confirm Password </label><input class="form-control" type="password" pattern=".{8,}" name="cpasswordX"></div>
+                          </div>
+                      </div>
                       <div class="form-row">
                           <div class="col-md-12 content-right"><button class="btn btn-danger form-btn" type="submit" name="studentProfileUpdate">Update</button></div>
                       </div>
@@ -73,6 +88,7 @@
               </div>
           </form>
       </div>
+        <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
         <div class="height150"></div>
       </div>
     </div>
@@ -92,6 +108,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="assets/js/Profile-Edit-Form.js"></script> -->
+    <script src="assets/js/Profile-Edit-Form.js"></script>
 </body>
 </html>

@@ -41,12 +41,14 @@ public class AddStudentCourse2 extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("AddStudentCourse.jsp");
                 rd.include(request, response);
             } else {
-                ps = con.prepareStatement("SELECT FCID FROM facourses WHERE CourseID=? AND Section=?");
+                ps = con.prepareStatement("SELECT * FROM facourses WHERE CourseID=? AND Section=?");
                 ps.setInt(1,CourseID);
                 ps.setInt(2,Section);
                 rs = ps.executeQuery();
                 if(rs.next()) {
                     int FCID = rs.getInt("FCID");
+                    int TotalStudents = rs.getInt("TotalStudents");
+                    int Seat = rs.getInt("Seat");
                     ps = con.prepareStatement("SELECT * FROM student WHERE StudentCourses=?");
                     ps.setInt(1, StudentCourses);
                     rs = ps.executeQuery();
@@ -59,27 +61,36 @@ public class AddStudentCourse2 extends HttpServlet {
 //                    rd.include(request, response);
                     if (courseTaken < 4) {
                         courseTaken++;
-                        ps = con.prepareStatement("INSERT INTO stcourses(StudentCourses, CourseID, Section, FCID) VALUES(?, ?, ?, ?)");
-                        ps.setInt(1, StudentCourses);
-                        ps.setInt(2, CourseID);
-                        ps.setInt(3, Section);
-                        ps.setInt(4, FCID);
-                        ps.executeUpdate();
+                        if(TotalStudents < Seat) {
+                            TotalStudents++;
+                            ps = con.prepareStatement("UPDATE facourses SET TotalStudents= ? WHERE FCID=?");
+                            ps.setInt(1, TotalStudents);
+                            ps.setInt(2, FCID);
+                            ps.executeUpdate();
 
-                        ps = con.prepareStatement("UPDATE student SET CourseTaken= ? WHERE StudentCourses=?");
-                        ps.setInt(1, courseTaken);
-                        ps.setInt(2, StudentCourses);
-                        ps.executeUpdate();
+                            ps = con.prepareStatement("INSERT INTO stcourses(StudentCourses, CourseID, Section, FCID) VALUES(?, ?, ?, ?)");
+                            ps.setInt(1, StudentCourses);
+                            ps.setInt(2, CourseID);
+                            ps.setInt(3, Section);
+                            ps.setInt(4, FCID);
+                            ps.executeUpdate();
 
-                        rs.close();
-                        con.close();
-                        request.setAttribute("ErrorMsg","Course added.");
-                        RequestDispatcher rd = request.getRequestDispatcher("AddStudentCourse.jsp");
-                        rd.include(request, response);
+                            ps = con.prepareStatement("UPDATE student SET CourseTaken= ? WHERE StudentCourses=?");
+                            ps.setInt(1, courseTaken);
+                            ps.setInt(2, StudentCourses);
+                            ps.executeUpdate();
+
+                            rs.close();
+                            con.close();
+                            request.setAttribute("ErrorMsg","Course added.");
+                            RequestDispatcher rd = request.getRequestDispatcher("AddStudentCourse.jsp");
+                            rd.include(request, response);
+                        }
+
                     } else {
                         rs.close();
                         con.close();
-                        request.setAttribute("ErrorMsg","You already have taken 4 courses.");
+                        request.setAttribute("ErrorMsg","You already have taken 4 courses or course seat full.");
                         RequestDispatcher rd = request.getRequestDispatcher("AddStudentCourse.jsp");
                         rd.include(request, response);
                     }

@@ -136,7 +136,7 @@
                         <%
                             if(session.getAttribute("USER") == "3") {
                         %>
-                        <h2>Message Now: <a href="Chat.jsp?StudentCourses=<%=session.getAttribute("STUDENTCOURSES")%>"><img
+                        <h2>Message Now: <a href="Chat.jsp?FacultyCourses=<%=facultyCourses%>"><img
                                 src="assets/img/message2.png" alt="" style="height: 30px; align-self: center"></a></h2>
                         <%
                             }
