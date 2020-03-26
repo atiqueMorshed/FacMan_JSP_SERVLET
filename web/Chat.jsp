@@ -143,6 +143,50 @@
 
                 }
             }
+            else if(request.getParameter("FCID") != null && session.getAttribute("FACULTYCOURSES") != null) {
+                int FCID = Integer.parseInt(request.getParameter("FCID"));
+                int FacultyCourses = (int)session.getAttribute("FACULTYCOURSES");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO messages(Sender, FCID, Message) VALUES(?,?,?)");
+                ps.setInt(1, FacultyCourses);
+                ps.setInt(2, FCID);
+                ps.setString(3, msg);
+                if(ps.executeUpdate()>0) {
+%>
+                  <script>
+                      window.location.href = "Chat.jsp?FCID=<%=FCID%>";
+                  </script>
+<%
+                  }
+                  else {
+%>
+                  <div class='alert alert-danger'>
+                      <strong><center>Error Sending Message!</center></strong>
+                  </div>
+<%
+                  }
+            }
+            else if(request.getParameter("FCID") != null && session.getAttribute("STUDENTCOURSES") != null) {
+                int FCID = Integer.parseInt(request.getParameter("FCID"));
+                int StudentCourses = (int)session.getAttribute("STUDENTCOURSES");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO messages(Sender, FCID, Message) VALUES(?,?,?)");
+                ps.setInt(1, StudentCourses);
+                ps.setInt(2, FCID);
+                ps.setString(3, msg);
+                if(ps.executeUpdate()>0) {
+%>
+                  <script>
+                      window.location.href = "Chat.jsp?FCID=<%=FCID%>";
+                  </script>
+<%
+                }
+                else {
+%>
+                  <div class='alert alert-danger'>
+                      <strong><center>Error Sending Message!</center></strong>
+                  </div>
+<%
+                }
+            }
         }
     }
 
@@ -157,7 +201,7 @@
 <div class="height150"></div>
     <footer class="py-5 bg-black footerBottom">
         <div class="container">
-            <p class="text-center text-white m-0 small">Copyright&nbsp;© FacMan 2018</p>
+            <p class="text-center text-white m-0 small">Copyright&nbsp;© FacMan 2020</p>
         </div>
     </footer>
     <script src="assets/js/jquery.min.js"></script>

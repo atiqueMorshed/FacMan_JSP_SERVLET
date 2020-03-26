@@ -107,10 +107,10 @@
                   <h1 class="masthead-heading mb-0">Faculty Management</h1>
               </div>
           </div>
-          <div class="bg-circle-1 bg-circle"></div>
-          <div class="bg-circle-2 bg-circle"></div>
-          <div class="bg-circle-3 bg-circle"></div>
-          <div class="bg-circle-4 bg-circle"></div>
+<%--          <div class="bg-circle-1 bg-circle"></div>--%>
+<%--          <div class="bg-circle-2 bg-circle"></div>--%>
+<%--          <div class="bg-circle-3 bg-circle"></div>--%>
+<%--          <div class="bg-circle-4 bg-circle"></div>--%>
       </header>
       <div class="height150"></div>
       <div class="TableWithSearch">

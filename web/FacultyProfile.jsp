@@ -136,7 +136,7 @@
                                     }
                                 %>
 
-                              <td><a href="FacultyProfileDatabaseMessageAll.jsp?FCID=<%=FCID%>">...</a></td>
+                              <td><a href="Chat.jsp?FCID=<%=FCID%>">...</a></td>
 
                             </tr>
 
