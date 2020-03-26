@@ -1,3 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="Database.DBConnect" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 
@@ -58,22 +65,20 @@
 <%--                        <div class="addFacultyCourseForm">--%>
                             <h1>Add Courses</h1>
                             <hr>
+                            <%
+                                int courseID = Integer.parseInt(request.getParameter("courseID"));
+                                if(!(courseID > 0) || request.getParameter("courseID") == null) {
+                                    request.setAttribute("ErrorMsg","Select a course.");
+                                    RequestDispatcher rd = request.getRequestDispatcher("AddCourseFacultyPre.jsp");
+                                    rd.include(request, response);
+                                }
+                            %>
                             <div class="form-row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Course</label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="courseID">
-                                            <option value="0">Select</option>
-                                            <option value="110">CSE110</option>
-                                            <option value="111">CSE111</option>
-                                            <option value="220">CSE220</option>
-                                            <option value="221">CSE221</option>
-                                            <option value="230">CSE230</option>
-                                            <option value="260">CSE260</option>
-                                            <option value="320">CSE320</option>
-                                            <option value="321">CSE321</option>
-                                            <option value="330">CSE330</option>
-                                            <option value="360">CSE360</option>
+                                            <option selected value="<%=courseID%>">CSE<%=courseID%></option>
                                         </select>
                                     </div>
 <%--                                    <div class="form-group"><label>CourseID </label><input class="form-control" type="text" name="courseID"></div>--%>
@@ -83,16 +88,54 @@
                                         <label for="exampleFormControlSelect2">Section</label>
                                         <select class="form-control" id="exampleFormControlSelect2" name="section">
                                             <option value="0">Select</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
+                                            <%
+//                                                int arr[]={1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+                                                ArrayList<Integer> al = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+//                                                ArrayList<Integer> al = new ArrayList<>();
+//                                                al.add(1);
+//                                                al.add(2);
+//                                                al.add(3);
+//                                                al.add(4);
+//                                                al.add(5);
+//                                                al.add(6);
+//                                                al.add(7);
+//                                                al.add(8);
+//                                                al.add(9);
+//                                                al.add(10);
+//                                                List Section = new ArrayList(Arrays.asList(arr));
+//                                                List<Integer> Section = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+                                                DBConnect dbc = new DBConnect();
+                                                Connection con = dbc.getConnection();
+
+                                                PreparedStatement ps = con.prepareStatement("SELECT * FROM facourses WHERE CourseID=? ORDER BY Section ASC");
+                                                ps.setInt(1, courseID);
+                                                ResultSet rs = ps.executeQuery();
+                                                while(rs.next()) {
+                                                    int S = rs.getInt("Section");
+                                                    if(al.contains(S)) {
+                                                        al.removeAll(Arrays.asList(S));
+//                                                        al.remove(S);
+                                                    }
+                                                }
+                                                for(int counter = 0; counter<al.size(); counter++) {
+                                                    int sec = al.get(counter);
+                                            %>
+
+                                            <option value="<%=sec%>"><%=sec%></option>
+                                            <%
+                                                }
+                                                al = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+                                            %>
+<%--                                            <option value="1">1</option>--%>
+<%--                                            <option value="2">2</option>--%>
+<%--                                            <option value="3">3</option>--%>
+<%--                                            <option value="4">4</option>--%>
+<%--                                            <option value="5">5</option>--%>
+<%--                                            <option value="6">6</option>--%>
+<%--                                            <option value="7">7</option>--%>
+<%--                                            <option value="8">8</option>--%>
+<%--                                            <option value="9">9</option>--%>
+<%--                                            <option value="10">10</option>--%>
                                         </select>
                                     </div>
 <%--                                    <div class="form-group"><label>Section </label><input class="form-control" type="text" name="section"></div>--%>
@@ -159,6 +202,8 @@
                     </div>
                 </div>
             </form>
+
+            <p class="text-center text-danger" name="error"><a href="AddCourseFacultyPre.jsp">Go Back</a></p>
             <p class="text-center text-danger" name="error"> ${ErrorMsg} </p>
         </div>
 
