@@ -166,7 +166,7 @@
                           </tbody>
                         </table>
 <%--                          <div class="col-sm-12 col-md-6">--%>
-                              <div class="col-md-12 content-right"><a class="btn btn-danger form-btn noUnderline" href="AddCourseFaculty.jsp">Add Course</a></div>
+                              <div class="col-md-12 content-right"><a class="btn btn-danger form-btn noUnderline" href="AddCourseFacultyPre.jsp">Add Course</a></div>
 <%--                          </div>--%>
                       </div>
 
