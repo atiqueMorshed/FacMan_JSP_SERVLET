@@ -57,3 +57,6 @@ html, body {
 .noUnderline{
   text-decoration: none;
 }
+header.masthead {
+  background: linear-gradient(0deg,#97bbc1,#121213);
+}

@@ -54,11 +54,6 @@ public class AddStudentCourse2 extends HttpServlet {
                     rs = ps.executeQuery();
                     rs.next();
                     int courseTaken = rs.getInt("CourseTaken");
-//                    rs.close();
-//                    con.close();
-//                    request.setAttribute("ErrorMsg",courseTaken);
-//                    RequestDispatcher rd = request.getRequestDispatcher("AddStudentCourse.jsp");
-//                    rd.include(request, response);
                     if (courseTaken < 4) {
                         courseTaken++;
                         if(TotalStudents < Seat) {

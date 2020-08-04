@@ -27,7 +27,7 @@ public class EditStudentProfile extends HttpServlet {
         String phone = request.getParameter("phone");
         String name = request.getParameter("name");
         if(!(password.equals(cpassword))) {
-            request.setAttribute("ErrorMsg", "Passwords do not match.");
+            request.setAttribute("ErrorMsg", "Passwords do not match.");`
             RequestDispatcher rd = request.getRequestDispatcher("EditStudentProfile.jsp");
             rd.include(request, response);
         } else {
