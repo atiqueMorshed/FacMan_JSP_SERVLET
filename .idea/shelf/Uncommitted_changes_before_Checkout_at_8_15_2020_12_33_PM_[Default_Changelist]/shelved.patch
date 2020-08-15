@@ -1,0 +1,18 @@
+Index: src/EditStudent/EditStudentProfile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package EditStudent;\r\n\r\n\r\nimport javax.servlet.RequestDispatcher;\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport javax.servlet.http.HttpSession;\r\nimport java.io.IOException;\r\nimport java.sql.SQLException;\r\n\r\n/**\r\n * Created by [Atique Morshed Sami] [17101076] on 3/26/2020.\r\n */\r\n@WebServlet(\"/EditStudentProfile\")\r\npublic class EditStudentProfile extends HttpServlet {\r\n    @Override\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String result = \"\";\r\n        HttpSession session = request.getSession();\r\n        String email = (String)session.getAttribute(\"STUDENTEMAIL\");\r\n        String password = request.getParameter(\"passwordX\");\r\n        String cpassword = request.getParameter(\"cpasswordX\");\r\n        String dob = request.getParameter(\"dob\");\r\n        String phone = request.getParameter(\"phone\");\r\n        String name = request.getParameter(\"name\");\r\n        if(!(password.equals(cpassword))) {\r\n            request.setAttribute(\"ErrorMsg\", \"Passwords do not match.\");`\r\n            RequestDispatcher rd = request.getRequestDispatcher(\"EditStudentProfile.jsp\");\r\n            rd.include(request, response);\r\n        } else {\r\n            EditStudentValidator esv = new EditStudentValidator(email, phone, dob, name, password);\r\n            try {\r\n                String ErrorMsg = esv.validatePhone();\r\n                result+=\"\\n\"+ErrorMsg;\r\n                ErrorMsg = esv.validateNamePass();\r\n                result+=\"\\n\"+ErrorMsg;\r\n\r\n\r\n                request.setAttribute(\"ErrorMsg\", result);\r\n                RequestDispatcher rd = request.getRequestDispatcher(\"EditStudentProfile.jsp\");\r\n                rd.include(request, response);\r\n            } catch (SQLException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/EditStudent/EditStudentProfile.java	(revision 60e8ecdb4235610029436c570857a55df6183155)
++++ src/EditStudent/EditStudentProfile.java	(date 1596700277777)
+@@ -27,7 +27,7 @@
+         String phone = request.getParameter("phone");
+         String name = request.getParameter("name");
+         if(!(password.equals(cpassword))) {
+-            request.setAttribute("ErrorMsg", "Passwords do not match.");`
++            request.setAttribute("ErrorMsg", "Passwords do not match.");
+             RequestDispatcher rd = request.getRequestDispatcher("EditStudentProfile.jsp");
+             rd.include(request, response);
+         } else {
