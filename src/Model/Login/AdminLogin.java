@@ -1,4 +1,7 @@
-package Login;
+package Model.Login;
+
+import Controller.LoginController.AdminExtractor;
+import Controller.LoginController.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,35 +17,28 @@ import java.sql.SQLException;
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
-@WebServlet("/FacultyLogin")
-public class FacultyLogin extends HttpServlet{
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        Validator validator = new Validator(2);
+        Validator validator = new Validator(1);
         try {
             if(validator.validate(email, password)) {
 //                out.println("Worked!");
                 HttpSession session = request.getSession();
-                FacultyExtractor faex = new FacultyExtractor();
-                InitialExtractor inex = new InitialExtractor();
-                FacultyCoursesExtractor fcex = new FacultyCoursesExtractor();
+                AdminExtractor adex = new AdminExtractor();
 
-                String name = faex.extractName(email);
-                String initial = inex.extractInitial(email);
-                int FacultyCourses = fcex.extractFC(email);
-
+                String name = adex.extractName(email);
                 session.setAttribute("NAME", name);
-                session.setAttribute("FACULTYEMAIL", email);
-                session.setAttribute("INITIAL", initial);
-                session.setAttribute("FACULTYCOURSES", FacultyCourses);
-                session.setAttribute("USER", "2");
-                response.sendRedirect("FacultyProfile.jsp");
+                session.setAttribute("ADMINEMAIL", email);
+                session.setAttribute("USER", "1");
+                response.sendRedirect("index.jsp");
             } else {
                 request.setAttribute("ErrorMsg", "Invalid login information.");
 //                out.println("inElse");
-                RequestDispatcher rd = request.getRequestDispatcher("FacultyLogin.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AdminLogin.jsp");
                 rd.include(request, response);
             }
         } catch (SQLException e) {

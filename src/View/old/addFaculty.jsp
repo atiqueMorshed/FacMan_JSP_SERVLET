@@ -25,7 +25,7 @@
 </nav>
 <div class="login-clean">
     <form method="post" action="addFaculty" style="margin-top: 100px;">
-        <h2 class="sr-only">Login Form</h2>
+        <h2 class="sr-only">Model.Login Form</h2>
         <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>

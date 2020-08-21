@@ -1,4 +1,4 @@
-package Login;
+package Controller.LoginController;
 
 import Model.Database.DBConnect;
 
