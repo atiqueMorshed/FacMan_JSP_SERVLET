@@ -1,4 +1,4 @@
-package EditStudent;
+package Model.EditStudent;
 
 import Model.Database.DBConnect;
 
@@ -17,7 +17,7 @@ public class EditStudentValidator {
     String dob="";
     String name="";
     String password="";
-    EditStudentValidator(String e, String ph, String d, String n, String p){
+    public EditStudentValidator(String e, String ph, String d, String n, String p){
         email = e;
         phone = ph;
         dob = d;

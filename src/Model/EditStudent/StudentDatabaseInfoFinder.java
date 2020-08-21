@@ -1,4 +1,4 @@
-package EditStudent;
+package Model.EditStudent;
 
 import Model.Database.DBConnect;
 import Model.EditFaculty.FacultyDatabaseInfoFinder;
@@ -28,7 +28,7 @@ public class StudentDatabaseInfoFinder extends FacultyDatabaseInfoFinder {
         con = dbc.getConnection();
 
         ps = con.prepareStatement("SELECT sc.FCID FROM s.student INNER JOIN sc.stcourses WHERE s.StudentCourses = sc.StudentCourses");
-        ps.setString(1, email);
+//        ps.setString(1, email);
         rs = ps.executeQuery();
         if(rs.next()) {
             int facultyCourses = rs.getInt("FacultyCourses");

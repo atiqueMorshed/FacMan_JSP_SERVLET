@@ -1,5 +1,7 @@
-package EditStudent;
+package Controller.EditStudentController;
 
+
+import Model.EditStudent.EditStudentValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

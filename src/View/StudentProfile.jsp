@@ -1,4 +1,4 @@
-<%@ page import="EditStudent.StudentDatabaseInfoFinder" %>
+<%@ page import="Model.EditStudent.StudentDatabaseInfoFinder" %>
 <%@ page import="Model.Database.DBConnect" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>

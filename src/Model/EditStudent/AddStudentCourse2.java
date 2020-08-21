@@ -1,4 +1,4 @@
-package EditStudent;
+package Model.EditStudent;
 
 import Model.Database.DBConnect;
 
