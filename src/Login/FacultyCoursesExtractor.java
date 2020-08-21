@@ -1,6 +1,6 @@
 package Login;
 
-import Database.DBConnect;
+import Model.Database.DBConnect;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

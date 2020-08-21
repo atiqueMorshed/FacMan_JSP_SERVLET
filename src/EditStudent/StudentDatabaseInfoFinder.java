@@ -1,6 +1,6 @@
 package EditStudent;
 
-import Database.DBConnect;
+import Model.Database.DBConnect;
 import EditFaculty.FacultyDatabaseInfoFinder;
 
 import java.sql.Connection;

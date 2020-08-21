@@ -1,14 +1,12 @@
 package Login;
 
-import Database.DBConnect;
+import Model.Database.DBConnect;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Database.DBConnect;
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */

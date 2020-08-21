@@ -5,9 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import Database.DBConnect;
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
+import Model.Database.DBConnect;
 
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
