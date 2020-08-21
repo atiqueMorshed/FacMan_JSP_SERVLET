@@ -4,7 +4,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="static javax.swing.UIManager.getInt" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="EditFaculty.FacultyDatabaseInfoFinder" %>
+<%@ page import="Model.EditFaculty.FacultyDatabaseInfoFinder" %>
 <!DOCTYPE html>
 <html>
 

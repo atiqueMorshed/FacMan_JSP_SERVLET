@@ -2,7 +2,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="EditFaculty.FacultyDatabaseInfoFinder" %>
+<%@ page import="Model.EditFaculty.FacultyDatabaseInfoFinder" %>
 <%@ page import="static java.lang.Integer.parseInt" %>
 <%--
   Created by IntelliJ IDEA.

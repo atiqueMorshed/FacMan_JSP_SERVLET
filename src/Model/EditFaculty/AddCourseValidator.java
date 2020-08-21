@@ -1,4 +1,4 @@
-package EditFaculty;
+package Model.EditFaculty;
 
 import Model.Database.DBConnect;
 
@@ -19,7 +19,7 @@ public class AddCourseValidator {
     int time;
     int totalSeat;
     String email;
-    AddCourseValidator(int cid, int s, int d, int t, int ts, String e) {
+    public AddCourseValidator(int cid, int s, int d, int t, int ts, String e) {
         courseID = cid;
         section = s;
         day = d;

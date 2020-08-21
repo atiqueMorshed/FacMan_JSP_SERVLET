@@ -1,4 +1,4 @@
-package EditFaculty;
+package Model.EditFaculty;
 
 import Model.Database.DBConnect;
 

@@ -1,4 +1,4 @@
-package EditFaculty;
+package Model.EditFaculty;
 
 
 import java.sql.Connection;
@@ -17,7 +17,7 @@ public class EditFacValidator {
     String initial="";
     String name="";
     String password="";
-    EditFacValidator(String e, String i, String n, String p){
+    public EditFacValidator(String e, String i, String n, String p){
         email = e;
         initial = i;
         name= n;

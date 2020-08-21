@@ -1,4 +1,4 @@
-<%@ page import="EditFaculty.FacultyDatabaseInfoFinder" %><%--
+<%@ page import="Model.EditFaculty.FacultyDatabaseInfoFinder" %><%--
   Created by IntelliJ IDEA.
   User: ArrowX17
   Date: 3/5/2020

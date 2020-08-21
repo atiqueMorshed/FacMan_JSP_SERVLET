@@ -1,4 +1,6 @@
-package EditFaculty;
+package Controller.EditFacultyController;
+
+import Model.EditFaculty.AddCourseValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
