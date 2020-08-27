@@ -1,4 +1,4 @@
-package Model.Registration;
+package Controller.RegistrationControllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

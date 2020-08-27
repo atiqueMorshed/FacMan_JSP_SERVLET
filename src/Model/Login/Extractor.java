@@ -1,4 +1,4 @@
-package Controller.LoginController;
+package Model.Login;
 
 import java.sql.SQLException;
 

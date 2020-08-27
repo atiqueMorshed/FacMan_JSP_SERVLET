@@ -1,6 +1,6 @@
-package Model.Registration;
+package Controller.RegistrationControllers;
 
-import Controller.RegistrationController.StudentValidator;
+import Model.Registration.FacultyValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,28 +15,29 @@ import java.util.ArrayList;
 /**
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
-@WebServlet("/AddStudent")
-public class AddStudent extends HttpServlet {
+@WebServlet("/AddFaculty")
+public class AddFaculty extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
+        String initial = request.getParameter("initial");
         String password = request.getParameter("password");
-        StudentValidator sv = new StudentValidator(email, password);
+        FacultyValidator fv = new FacultyValidator(email, initial, password);
 
         try {
-            ArrayList<String> al = sv.validate();
+            ArrayList<String> al = fv.validate();
             if(al.isEmpty()) {
-                request.setAttribute("ESMessage", "Successfully added Student.");
-                RequestDispatcher rd = request.getRequestDispatcher("AddStudent.jsp");
+                request.setAttribute("ESMessage", "Successfully added faculty.");
+                RequestDispatcher rd = request.getRequestDispatcher("AddFaculty.jsp");
                 rd.include(request, response);
             }
             else {
                 StringBuilder sb = new StringBuilder();
                 for(String val: al) {
-                    sb.append(val+"\n");
-//                    sb.append("\n");
+                    sb.append(val);
+                    sb.append("\n");
                 }
                 request.setAttribute("ESMessage", sb.toString());
-                RequestDispatcher rd = request.getRequestDispatcher("AddStudent.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AddFaculty.jsp");
                 rd.include(request, response);
             }
 
@@ -48,7 +49,5 @@ public class AddStudent extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

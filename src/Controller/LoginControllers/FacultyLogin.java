@@ -1,9 +1,9 @@
-package Model.Login;
+package Controller.LoginControllers;
 
-import Controller.LoginController.FacultyCoursesExtractor;
-import Controller.LoginController.FacultyExtractor;
-import Controller.LoginController.InitialExtractor;
-import Controller.LoginController.Validator;
+import Model.Login.FacultyCoursesExtractor;
+import Model.Login.FacultyExtractor;
+import Model.Login.InitialExtractor;
+import Model.Login.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

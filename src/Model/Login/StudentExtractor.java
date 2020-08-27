@@ -1,6 +1,5 @@
-package Controller.LoginController;
+package Model.Login;
 
-import Controller.LoginController.Extractor;
 import Model.Database.DBConnect;
 
 import java.sql.Connection;

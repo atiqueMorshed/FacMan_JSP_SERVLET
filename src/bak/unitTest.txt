@@ -1,0 +1,6 @@
+select method and press shift ctrl T to create test case.
+press control N to create new test method.
+press shift control F10 to run test code.
+ctrl F5 to retun
+To go back to main code, press shift ctrl T again.
+https://www.youtube.com/watch?v=QDFI19lj4OM

@@ -1,6 +1,5 @@
-package Controller.LoginController;
+package Model.Login;
 
-import Controller.LoginController.FacultyExtractor;
 import Model.Database.DBConnect;
 
 import java.sql.Connection;
@@ -9,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
+ * Created by [Atique Morshed Sami] [17101076] on 3/17/2020.
  */
-public class InitialExtractor extends FacultyExtractor {
-    public String extractInitial(String email) throws SQLException {
-        String initial = "Error From FacultyExractor";
+public class FacultyCoursesExtractor extends FacultyExtractor {
+    public int extractFC(String email) throws SQLException {
+        int FacultyCourses = -1;
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
         PreparedStatement ps = con.prepareStatement("SELECT * FROM faculty WHERE FacultyEmail=?");
@@ -21,9 +20,11 @@ public class InitialExtractor extends FacultyExtractor {
 
         ResultSet rs = ps.executeQuery();
         if(rs.next()) {
-            initial = rs.getString("FacultyInitial");
+            FacultyCourses = rs.getInt("FacultyCourses");
         }
         con.close();
-        return initial;
+        return FacultyCourses;
     }
 }
+
+
