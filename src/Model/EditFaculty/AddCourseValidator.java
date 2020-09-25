@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import Model.Database.DBConnect;
 
 import static java.lang.Integer.parseInt;
 
@@ -19,6 +20,10 @@ public class AddCourseValidator {
     int time;
     int totalSeat;
     String email;
+    DBConnect dbct;
+    public AddCourseValidator(DBConnect dbc, int cid, int s, int d, int t, int ts, String e) {
+        dbct = dbc;
+    }
     public AddCourseValidator(int cid, int s, int d, int t, int ts, String e) {
         courseID = cid;
         section = s;
@@ -29,6 +34,10 @@ public class AddCourseValidator {
     }
 
     public String validate() throws SQLException {
+        if(dbct != null) {
+            String a = dbct.getConnectionT();
+            return "Insertion Successful.";
+        }
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
 

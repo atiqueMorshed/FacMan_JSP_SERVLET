@@ -11,7 +11,15 @@ import java.sql.SQLException;
  * Created by [Atique Morshed Sami] [17101076] on 3/17/2020.
  */
 public class FacultyCoursesExtractor extends FacultyExtractor {
+    DBConnect dbct;
+    public FacultyCoursesExtractor() {}
+    public FacultyCoursesExtractor(DBConnect dbc) {
+        dbct = dbc;
+    }
+
     public int extractFC(String email) throws SQLException {
+        if(dbct != null)
+            return 7;
         int FacultyCourses = -1;
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();

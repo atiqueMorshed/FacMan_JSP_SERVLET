@@ -1,0 +1,4 @@
+Name: Atique Morshed
+SID: 17101076
+Course: CSE470 Section 02
+Project: Student-Faculty management with Individual & Group Chat

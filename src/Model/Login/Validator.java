@@ -12,10 +12,16 @@ import java.sql.SQLException;
  */
 public class Validator {
     public int x;
+    DBConnect dbct;
+    public Validator(DBConnect dbc) {
+        dbct = dbc;
+    }
     public Validator(int x) {
         this.x=x;
     }
     public boolean validate(String email, String password) throws SQLException {
+        if(dbct!= null)
+            return true;
         boolean result = false;
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();

@@ -20,4 +20,7 @@ public class DBConnect{
         }
         return con;
     }
+    public String getConnectionT() {
+        return "con";
+    }
 }

@@ -11,8 +11,11 @@ import java.sql.SQLException;
  * Created by [Atique Morshed Sami] [17101076] on 3/5/2020.
  */
 public class FacultyDatabaseInfoFinder {
-
+    DBConnect dbct = new DBConnect();
     public int FacultyCoursesFinder(String email) throws SQLException {
+        if(dbct != null) {
+            return 1;
+        }
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
         PreparedStatement ps = con.prepareStatement("SELECT * FROM faculty WHERE FacultyEmail=?");

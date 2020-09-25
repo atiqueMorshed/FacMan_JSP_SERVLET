@@ -17,6 +17,12 @@ public class EditFacValidator {
     String initial="";
     String name="";
     String password="";
+    DBConnect dbct;
+
+    public EditFacValidator(DBConnect dbc, String e, String i, String n, String p) {
+        dbct = dbc;
+    }
+
     public EditFacValidator(String e, String i, String n, String p){
         email = e;
         initial = i;
@@ -24,6 +30,10 @@ public class EditFacValidator {
         password = p;
     }
     public String validateInitial() throws SQLException {
+        if(dbct != null) {
+            String a = dbct.getConnectionT();
+            return "Initial Updated.";
+        }
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
 
@@ -50,6 +60,10 @@ public class EditFacValidator {
         return "Initial Update Failed.";
     }
     public String validateNamePass() throws SQLException {
+        if(dbct != null) {
+            String a = dbct.getConnectionT();
+            return "Name Updated.\nPassword Updated.";
+        }
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
 

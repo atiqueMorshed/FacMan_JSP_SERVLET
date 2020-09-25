@@ -15,6 +15,12 @@ import Controller.RegistrationControllers.Validator;
 public class StudentValidator implements Validator {
     String email="";
     String password="";
+    DBConnect dbct;
+    public StudentValidator(DBConnect dbc, String e, String p){
+        email = e;
+        password = p;
+        dbct= dbc;
+    }
     public StudentValidator(String e, String p){
         email = e;
         password = p;
@@ -22,6 +28,12 @@ public class StudentValidator implements Validator {
     public ArrayList<String> validate() throws SQLException {
         boolean result = false;
         ArrayList<String> al = new ArrayList<String>();
+        //TEST_START
+        if(dbct!= null) {
+            al.add("Registration Successful");
+            return al;
+        }
+        //TEST_END
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
 

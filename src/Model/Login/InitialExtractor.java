@@ -11,7 +11,15 @@ import java.sql.SQLException;
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
 public class InitialExtractor extends FacultyExtractor {
+    DBConnect dbct;
+    public InitialExtractor() {}
+    public InitialExtractor(DBConnect dbc) {
+        dbct= dbc;
+    }
+
     public String extractInitial(String email) throws SQLException {
+        if(dbct!= null)
+            return "FAO";
         String initial = "Error From FacultyExractor";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();

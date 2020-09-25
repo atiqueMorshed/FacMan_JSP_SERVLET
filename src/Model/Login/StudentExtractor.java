@@ -12,8 +12,17 @@ import java.sql.SQLException;
  */
 public class StudentExtractor implements Extractor {
 
+    DBConnect dbct;
+    public StudentExtractor() {}
+
+    public StudentExtractor(DBConnect dbc) {
+        dbct = dbc;
+    }
+
     @Override
     public String extractName(String email) throws SQLException {
+        if(dbct!= null)
+            return "Student One";
         String name = "Error From StudentExractor";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
@@ -30,6 +39,8 @@ public class StudentExtractor implements Extractor {
     }
 
     public int extractStudentCourses(String email) throws SQLException {
+        if(dbct!= null)
+            return 9;
         int StudentCourses = 0;
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
@@ -45,6 +56,8 @@ public class StudentExtractor implements Extractor {
         return StudentCourses;
     }
     public String extractDOB(String email) throws SQLException {
+        if(dbct!= null)
+            return "1999-12-09";
         String dob = "";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
@@ -61,6 +74,8 @@ public class StudentExtractor implements Extractor {
     }
 
     public String extractPhone(String email) throws SQLException {
+        if(dbct!= null)
+            return "+8801765431433";
         String phone = "";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();

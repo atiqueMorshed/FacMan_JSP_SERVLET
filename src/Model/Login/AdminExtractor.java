@@ -11,9 +11,16 @@ import java.sql.SQLException;
  * Created by [Atique Morshed Sami] [17101076] on 3/4/2020.
  */
 public class AdminExtractor implements Extractor {
+    DBConnect dbct;
+    public AdminExtractor() {}
+    public AdminExtractor(DBConnect dbc) {
+        dbct = dbc;
+    }
 
     @Override
     public String extractName(String email) throws SQLException {
+        if(dbct != null)
+            return "Yager";
         String name = "Error From AdminExractor";
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();

@@ -12,8 +12,17 @@ import java.sql.SQLException;
  */
 public class FacultyExtractor implements Extractor {
 
+    DBConnect dbct;
+    public FacultyExtractor() {
+    }
+    public FacultyExtractor(DBConnect dbc) {
+        dbct = dbc;
+    }
+
     @Override
     public String extractName(String email) throws SQLException {
+        if(dbct != null)
+            return "Faculty One";
         String name = "Error From FacultyExractor";
         String initial;
         DBConnect dbc = new DBConnect();

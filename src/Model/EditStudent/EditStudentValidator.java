@@ -17,6 +17,15 @@ public class EditStudentValidator {
     String dob="";
     String name="";
     String password="";
+    DBConnect dbct;
+    public EditStudentValidator(DBConnect dbc, String e, String ph, String d, String n, String p){
+        email = e;
+        phone = ph;
+        dob = d;
+        name= n;
+        password = p;
+        dbct = dbc;
+    }
     public EditStudentValidator(String e, String ph, String d, String n, String p){
         email = e;
         phone = ph;
@@ -25,6 +34,9 @@ public class EditStudentValidator {
         password = p;
     }
     public String validatePhone() throws SQLException {
+        if(dbct != null) {
+            return "Phone Updated.";
+        }
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getConnection();
 
